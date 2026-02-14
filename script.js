@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 7, x: 150, y: 450, color: '#55ff55', msg: "Our story started on July 27th, and it's been my favorite chapter of my life ever since." },
         { id: 8, x: 450, y: 450, color: '#ffaa55', msg: "The only thing harder than this distance between Pampanga and Palawan is... well, me. Every time I imagine you and I can't do anything about it." },
         { id: 9, x: 250, y: 400, color: '#5555ff', msg: "If I had a Devil Fruit power, I'd choose the one that lets me teleport to side your right now." },
-        { id: 10, x: 350, y: 400, color: '#aa0000', msg: "Every time I see your message, my heart feels like Ace's chest; completely open and melty because of you (ded ace bars)" },
+        { id: 10, x: 350, y: 400, color: '#aa0000', msg: "You must be Akainu, because you just left a permanent hole in my heart and it’s definitely not because of the character development." },
         { id: 11, x: 200, y: 550, color: '#aaffaa', msg: "Our love is like Ace: It's never going to grow old, because... Well, gets mo na yon! 🔥" },
         { id: 12, x: 400, y: 550, color: '#4169e1', msg: "Like Luffy's crew, I'm ready for a long journey ahead. I'll see you soon, Babe. That's a promise!" }
     ];
