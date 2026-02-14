@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     
+    
     // --- 1. CONFIGURATION: The 12 Flowers ---
     const flowersData = [
         { id: 1, x: 300, y: 150, color: '#ff5555', msg: "To my favorite Sage-colored soul: You make everything a little more peaceful, even from for away." },
