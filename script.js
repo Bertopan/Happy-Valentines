@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
-    
-    // --- 1. CONFIGURATION: The 12 Flowers ---
     const flowersData = [
         { id: 1, x: 300, y: 150, color: '#ff5555', msg: "To my favorite Sage-colored soul: You make everything a little more peaceful, even from for away." },
         { id: 2, x: 200, y: 250, color: '#55ffff', msg: "I know you find it hard to believe, but you really are the most beautiful view I've seen." },
@@ -21,9 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dialogueBox = document.getElementById('dialogueBox');
     const dialogueText = document.getElementById('dialogueText');
     const secretRose = document.getElementById('secretRose');
-    let currentTypeWriterId = 0; // Tracks the most recent click to prevent gibberish
-
-    // --- 2. BUILD THE BOUQUET ---
+    let currentTypeWriterId = 0;
     flowersData.forEach((flower, index) => {
         const startX = 300;
         const startY = 800;
@@ -86,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
         plantGroup.appendChild(flowerGroup);
     });
 
-    // --- 3. DIALOGUE SYSTEM (FIXED) ---
     function showDialogue(text) {
         const myId = ++currentTypeWriterId;
         dialogueText.innerHTML = ""; dialogueBox.classList.remove("hidden");
@@ -106,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("click", () => dialogueBox.classList.add("hidden"));
     dialogueBox.addEventListener("click", (e) => e.stopPropagation());
     
-    // --- 4. FIREFLIES LOGIC ---
     const firefliesContainer = document.getElementById('fireflies');
     function createFirefly() {
         const firefly = document.createElement('div');

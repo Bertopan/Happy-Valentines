@@ -1,5 +1,4 @@
-/* 1. General Setup */
-/* 1. General Setup */
+
 body {
     margin: 0;
     padding: 0;
@@ -24,7 +23,6 @@ body {
     align-items: flex-end;
 }
 
-/* 2. Night Sky */
 .night-sky {
     position: absolute;
     top: 0;
@@ -41,7 +39,6 @@ body {
     z-index: 0;
 }
 
-/* 3. SVG */
 .flower-svg {
     width: 100%; 
     height: 90vh; 
@@ -51,7 +48,6 @@ body {
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
 }
 
-/* 4. Stems */
 .stem {
     fill: none;
     stroke: #8afcfc; /* Default stem color */
@@ -62,12 +58,10 @@ body {
     animation: drawStem 4s linear forwards;
 }
 
-/* 5. Flowers */
 .flower-head {
     opacity: 1;
 }
 
-/* The Core - CLICKABLE */
 .core {
     fill: #fffb00;
     filter: drop-shadow(0 0 5px #fffb00);
@@ -76,9 +70,6 @@ body {
     
     cursor: pointer; 
     pointer-events: all;
-    
-    /* FIX: INCREASE CLICKABLE AREA FOR PHONES */
-    /* This adds a large invisible border around the dot so she doesn't have to be precise */
     stroke: transparent;
     stroke-width: 30px; 
     
@@ -86,21 +77,16 @@ body {
 }
 
 .core:hover {
-    transform: scale(1.3); /* Grows slightly when hovered */
+    transform: scale(1.3);
 }
 
-/* Petals */
 .petals ellipse {
-    /* New Outline Settings */
-    stroke: rgba(255, 255, 255, 0.8); /* 80% visible white outline */
-    stroke-width: 1.5px;              /* Thin, elegant line */
-    
-    /* Existing Animation Logic */
+    stroke: rgba(255, 255, 255, 0.8);
+    stroke-width: 1.5px;
     opacity: 0;
     animation: simpleAppear 0.5s ease-out forwards;
 }
 
-/* 6. Fireflies */
 .fireflies-container {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -114,7 +100,7 @@ body {
     opacity: 0; animation: floatUp 4s ease-in infinite;
 }
 
-/* 7. POKÉMON DIALOGUE BOX */
+
 .dialogue-box {
     position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
     width: 90%; max-width: 700px; min-height: 100px;
@@ -141,7 +127,6 @@ body {
 #secretRose { display: inline-block; transition: transform 0.3s ease; }
 #secretRose:hover { transform: scale(1.5) rotate(15deg); filter: drop-shadow(0 0 10px #ff0055); }
 
-/* Caption - FIXED READABILITY */
 .caption {
     position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
     color: #ffffff; font-size: 1.5rem; font-weight: bold; letter-spacing: 2px;
