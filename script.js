@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 1, x: 300, y: 150, color: '#ff5555', msg: "To my favorite Sage-colored soul: You make everything a little more peaceful, even from for away." },
         { id: 2, x: 200, y: 250, color: '#55ffff', msg: "I know you find it hard to believe, but you really are the most beautiful view I've seen." },
         { id: 3, x: 400, y: 250, color: '#ff4500', msg: "Distance is just a test to see how far love can travel. From Pampanga to Palawan, my Heart is always with you, Ali." },
-        { id: 4, x: 100, y: 350, color: '#aa55ff', msg: "You don't have to say 'I love you' back for me to know how special you are. I'm happy just being your 'bebe'." },
+        { id: 4, x: 100, y: 350, color: '#aa55ff', msg: "You don't have to say 'I love you' back, for me to know how special I am to you. I'm happy just being your 'bebe'." },
         { id: 5, x: 500, y: 350, color: '#ff55aa', msg: "I'd trade a whole box of Snickers just to see you smile for a second." },
         { id: 6, x: 300, y: 300, color: '#ff00ff', msg: "You're the Carbonara to my Baked Mac, different but the perfect match." },
         { id: 7, x: 150, y: 450, color: '#55ff55', msg: "Our story started on July 27th, and it's been my favorite chapter of my life ever since." },
