@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Flower Animation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div class="scene-container">
+        <div class="night-sky" id="nightSky"></div>
+
+        <svg class="flower-svg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+    <g class="plant-group">
+        <path class="stem main-stem" d="M300,800 Q300,600 300,450 T300,250" />
+        <path class="stem branch-left" d="M300,550 Q200,500 180,400" />
+        <path class="stem branch-right" d="M300,450 Q400,400 420,300" />
+
+        <g id="pos-center" transform="translate(300, 250)">
+            <g class="flower-head">
+                <g class="petals">
+                    <ellipse cx="0" cy="-25" rx="15" ry="30" />
+                    <ellipse cx="22" cy="15" rx="15" ry="30" transform="rotate(-60)" />
+                    <ellipse cx="-22" cy="15" rx="15" ry="30" transform="rotate(60)" />
+                </g>
+                <circle class="core" r="12" />
+            </g>
+        </g>
+
+        <g id="pos-left" transform="translate(180, 400)">
+            <g class="flower-head">
+                <g class="petals">
+                    <ellipse cx="0" cy="-22" rx="12" ry="25" transform="rotate(-20)"/>
+                    <ellipse cx="20" cy="12" rx="12" ry="25" transform="rotate(-60)"/>
+                    <ellipse cx="-20" cy="12" rx="12" ry="25" transform="rotate(60)"/>
+                </g>
+                <circle class="core" r="10" />
+            </g>
+        </g>
+
+        <g id="pos-right" transform="translate(420, 300)">
+            <g class="flower-head">
+                <g class="petals">
+                    <ellipse cx="0" cy="-20" rx="12" ry="25" transform="rotate(20)"/>
+                    <ellipse cx="20" cy="10" rx="12" ry="25" transform="rotate(-70)"/>
+                    <ellipse cx="-20" cy="10" rx="12" ry="25" transform="rotate(100)"/>
+                </g>
+                <circle class="core" r="10" />
+            </g>
+        </g>
+    </g>
+</svg>
+
+        <div class="fireflies-container" id="fireflies"></div>
+
+        <div class="caption">flower Animation</div>
+    </div>
+
+</body>
+</html>
