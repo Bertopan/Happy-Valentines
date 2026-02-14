@@ -1,34 +1,36 @@
-/* 1. General Setup & Background */
+/* 1. General Setup */
+/* 1. General Setup */
 body {
     margin: 0;
     padding: 0;
     background: radial-gradient(circle at bottom, #0d1a20 0%, #000000 100%);
     overflow: hidden;
-    height: 100vh;
+    height: 100vh;      
+    height: 100dvh;     
     width: 100vw;
-    display: flex;       /* Flexbox to center everything */
+    display: flex;
     justify-content: center;
-    align-items: flex-end; /* Align flower to the bottom of the screen */
+    align-items: flex-end;
     font-family: 'Courier New', Courier, monospace;
+    user-select: none; 
+    -webkit-tap-highlight-color: transparent; 
 }
-
 .scene-container {
     position: relative;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Key for keeping flower at bottom */
+    align-items: flex-end;
 }
 
-/* 2. The Starry Night Background */
+/* 2. Night Sky */
 .night-sky {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Stars logic remains same */
     background-image: 
         radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
         radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
@@ -39,154 +41,119 @@ body {
     z-index: 0;
 }
 
-/* 3. The SVG Container - RESPONSIVE FIX */
+/* 3. SVG */
 .flower-svg {
-    /* "vmin" allows it to size relative to the smaller dimension of the screen */
-    /* This ensures it fits on mobile (width-limited) and PC (height-limited) */
     width: 100%; 
-    height: 90vh; /* Leave 10% space at top */
-    
-    max-width: 800px; /* Don't get too huge on giant monitors */
-    
+    height: 90vh; 
+    max-width: 800px; 
     z-index: 10;
     overflow: visible;
-    
-    /* Glow Effect */
-    filter: drop-shadow(0 0 8px rgba(77, 238, 234, 0.6)) 
-            drop-shadow(0 0 15px rgba(77, 238, 234, 0.4));
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
 }
 
-/* 4. The Stems (Lines) */
+/* 4. Stems */
 .stem {
     fill: none;
-    stroke: #8afcfc;
-    stroke-width: 6; /* Slightly thicker for better visibility on PC */
+    stroke: #8afcfc; /* Default stem color */
+    stroke-width: 4; 
     stroke-linecap: round;
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: drawStem 5.5s linear forwards;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: drawStem 4s linear forwards;
 }
 
-.branch-left { animation-delay: 1.5s; }
-.branch-right { animation-delay: 2.0s; }
-
-/* 5. The Flower Heads - SEQUENTIAL FAN VISIBILITY */
-
-/* 5a. The Container */
+/* 5. Flowers */
 .flower-head {
-    /* No animation on the container itself, just visibility */
-    opacity: 1; 
+    opacity: 1;
 }
 
-/* 5b. The Core (Yellow Center) - Appears First */
+/* The Core - CLICKABLE */
 .core {
     fill: #fffb00;
     filter: drop-shadow(0 0 5px #fffb00);
-    opacity: 0; /* Start hidden */
+    opacity: 0;
     animation: simpleAppear 0.5s ease-out forwards;
+    
+    cursor: pointer; 
+    pointer-events: all;
+    
+    /* FIX: INCREASE CLICKABLE AREA FOR PHONES */
+    /* This adds a large invisible border around the dot so she doesn't have to be precise */
+    stroke: transparent;
+    stroke-width: 30px; 
+    
+    transition: transform 0.2s;
 }
 
-/* 5c. The Petals - Appear sequentially */
+.core:hover {
+    transform: scale(1.3); /* Grows slightly when hovered */
+}
+
+/* Petals */
 .petals ellipse {
-    fill: #b3ffff; /* Cyan */
-    opacity: 0; /* Start hidden */
+    /* New Outline Settings */
+    stroke: rgba(255, 255, 255, 0.8); /* 80% visible white outline */
+    stroke-width: 1.5px;              /* Thin, elegant line */
+    
+    /* Existing Animation Logic */
+    opacity: 0;
     animation: simpleAppear 0.5s ease-out forwards;
-}
-
-/* --- DELAY MANAGEMENT (The Fan Sequence) --- */
-/* Logic: Core -> Right Petal -> Center Petal -> Left Petal */
-
-/* --- FLOWER 1 (Left Side) --- */
-/* Stem arrives at 2.8s */
-#pos-left .core { animation-delay: 2.8s; }
-
-/* Sequence: Right (child 2) -> Center (child 1) -> Left (child 3) */
-#pos-left .petals ellipse:nth-child(2) { animation-delay: 3.0s; } /* Right */
-#pos-left .petals ellipse:nth-child(1) { animation-delay: 3.2s; } /* Center/Top */
-#pos-left .petals ellipse:nth-child(3) { animation-delay: 3.3s; } /* Left */
-
-
-/* --- FLOWER 2 (Right Side) --- */
-/* Stem arrives at 3.2s */
-#pos-right .core { animation-delay: 3.2s; }
-
-/* Sequence: Right (child 3) -> Center (child 1) -> Left (child 2) */
-#pos-right .petals ellipse:nth-child(3) { animation-delay: 3.4s; } /* Right */
-#pos-right .petals ellipse:nth-child(1) { animation-delay: 3.6s; } /* Center/Top */
-#pos-right .petals ellipse:nth-child(2) { animation-delay: 3.8s; } /* Left */
-
-
-/* --- FLOWER 3 (Center Top) --- */
-/* Stem arrives at 3.5s */
-#pos-center .core { animation-delay: 3.5s; }
-
-/* Sequence: Right (child 2) -> Center (child 1) -> Left (child 3) */
-#pos-center .petals ellipse:nth-child(2) { animation-delay: 3.7s; } /* Right */
-#pos-center .petals ellipse:nth-child(1) { animation-delay: 3.9s; } /* Center/Top */
-#pos-center .petals ellipse:nth-child(3) { animation-delay: 4.0s; } /* Left */
-
-
-/* --- KEYFRAMES --- */
-/* Simple fade from 0 to 1. No movement. No rotation changes. */
-@keyframes simpleAppear {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
 }
 
 /* 6. Fireflies */
 .fireflies-container {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 15;
-    pointer-events: none;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 15; pointer-events: none;
 }
-
 .firefly {
     position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #fffb00;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #fffb00, 0 0 20px #fffb00;
-    opacity: 0;
-    animation: floatUp 4s ease-in infinite;
+    width: 4px; height: 4px;
+    background: #fffb00; border-radius: 50%;
+    box-shadow: 0 0 10px #fffb00;
+    opacity: 0; animation: floatUp 4s ease-in infinite;
 }
 
-/* 7. Text Overlay - RESPONSIVE FIX */
+/* 7. POKÉMON DIALOGUE BOX */
+.dialogue-box {
+    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+    width: 90%; max-width: 700px; min-height: 100px;
+    background-color: white;
+    border: 6px solid #383838;
+    outline: 4px solid #ffffff;
+    box-shadow: 0 0 0 4px #383838, 0 10px 20px rgba(0,0,0,0.5);
+    border-radius: 8px; padding: 20px; z-index: 100;
+    font-size: 1.2rem; font-weight: bold; color: #383838;
+    display: flex; flex-direction: column; justify-content: space-between;
+}
+
+.hidden {
+    display: none;
+}
+
+.dialogue-arrow {
+    align-self: flex-end;
+    color: #e60000;
+    animation: bounce 1s infinite;
+}
+
+#secretRose { display: inline-block; transition: transform 0.3s ease; }
+#secretRose:hover { transform: scale(1.5) rotate(15deg); filter: drop-shadow(0 0 10px #ff0055); }
+
+/* Caption - FIXED READABILITY */
 .caption {
-    position: absolute;
-    bottom: 5%; /* Relative positioning */
-    left: 50%;
-    transform: translateX(-50%); /* Perfectly center text */
-    color: rgba(255, 255, 255, 0.8);
-    font-size: clamp(1rem, 2vw, 1.5rem); /* Text scales with screen size */
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    z-index: 20;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    white-space: nowrap;
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    color: #ffffff; font-size: 1.5rem; font-weight: bold; letter-spacing: 2px;
+    text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055, 0 0 40px #ff0055;
+    z-index: 20; pointer-events: auto; white-space: nowrap;
 }
 
-/* --- ANIMATION KEYFRAMES --- */
-@keyframes drawStem {
-    to { stroke-dashoffset: 0; }
-}
-
-@keyframes bloom {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
+/* KEYFRAMES */
+@keyframes drawStem { to { stroke-dashoffset: 0; } }
+@keyframes simpleAppear { to { opacity: 1; } }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 @keyframes floatUp {
     0% { transform: translateY(0) scale(1); opacity: 0; }
     20% { opacity: 1; }
-    80% { opacity: 0.8; }
     100% { transform: translateY(-200px) scale(0); opacity: 0; }
 }
